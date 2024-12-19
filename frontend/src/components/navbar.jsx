@@ -2,6 +2,24 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 function Navbar() {
+
+  // const [authUser, setAuthUser] = useAuth();
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  const element = document.documentElement;
+  useEffect(() => {
+    if (theme === "dark") {
+      element.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      document.body.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
   const navItems = (
     <>
       <li>
@@ -82,17 +100,17 @@ function Navbar() {
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
           <div className="hidden md:block">
-            <label className=" px-3 py-2 border rounded-md flex items-center gap-2 bg-white ">
+            <label className=" px-1 py-1 border rounded-md flex items-center gap-2 bg-white ">
               <input
                 type="text"
-                className="grow outline-none rounded-md px-1 dark:bg-slate-900 dark:text-white"
+                className="grow outline-none rounded-md px-1 "
                 placeholder="Search"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
-                className="w-4 h-4 opacity-70"
+                className="w-4 h-6 opacity-70 mr-1  dark:text-slate-900"
               >
                 <path
                   fillRule="evenodd"

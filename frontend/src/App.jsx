@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import Navbar from './components/navbar'
-import Banner from './components/banner'
-import Footer from './components/footer'
+import { useState } from "react";
+import Home from "./home/home";
+import Courses from "./courses/courses";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <Navbar />
-      <Banner />
-      <Footer/>
+      <div className="dark:bg-slate-900 dark:text-white">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/course" element={<Courses />} />
+        </Routes>
+      </div>
     </>
-    // <h1>
-    //   Hello world!
-    // </h1>
-  )
+  );
 }
 
-export default App
+export default App;
