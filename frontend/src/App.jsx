@@ -4,6 +4,7 @@ import Courses from "./courses/courses";
 import Signup from "./components/signup";
 import Contacts from "./contacts/contacts";
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
           <Route path="/course" element={<Courses />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contacts />} />
+          <Toaster />
 
         </Routes>
       </div>
